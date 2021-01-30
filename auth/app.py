@@ -6,7 +6,8 @@ application = Flask(__name__)
 @application.route('/auth', methods=['POST'])
 def auth():
     try:
-        token = request.form['token']
+        # check the Authorization header token against db
+        token = request.headers.get('Authorization')
         con = sql.connect("database.db")
         cur = con.cursor()
         cur.execute(
