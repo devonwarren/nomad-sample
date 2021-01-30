@@ -17,9 +17,15 @@ jobs:
         with:
           install: true
       -
-        name: Build
+        name: Build Auth
         run: |
-          docker build . # will run buildx
+          cd auth
+          docker build . -t auth:1.0
+      -
+        name: Build Jobs
+        run: |
+          cd jobs
+          docker build . -t jobs:1.0
   deploy:
     name: Nomad Deploy
     runs-on: ubuntu-latest
