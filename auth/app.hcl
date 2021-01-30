@@ -4,7 +4,6 @@ job "auth-app" {
     datacenters = ["dc1"]
 
     group "webapp" {
-        count = 1
 
         task "webservice" {
             driver = "docker"
@@ -12,11 +11,15 @@ job "auth-app" {
             config {
                 # build using 1.0 tag so we don't have to use registry
                 image = "auth:1.0"
-                labels {
-                    group = "auth"
+            }
+
+            resources {
+                network {
+                    port "http" {
+                        static = 5001
+                    }
                 }
             }
-            
         }
     }
 }
