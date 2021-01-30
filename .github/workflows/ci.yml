@@ -29,14 +29,14 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Deploy Auth
-        uses: qazz92/nomad-deploy-action
+        uses: qazz92/nomad-deploy-action@1.0.1
         with:
           token: ${{ secrets.YOUR_NOMAD_SECRET }}
           address: ${{ secrets.YOUR_NOMAD_SERVER }}
           job: auth/app.hcl
         
       - name: Deploy Jobs
-        uses: qazz92/nomad-deploy-action
+        uses: qazz92/nomad-deploy-action@1.0.1
         with:
           token: ${{ secrets.YOUR_NOMAD_SECRET }}
           address: ${{ secrets.YOUR_NOMAD_SERVER }}
